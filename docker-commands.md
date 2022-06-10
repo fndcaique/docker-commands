@@ -1,41 +1,79 @@
 # Show docker version
-docker -v
+- docker -v
 
 # Show docker info
-docker info
+- docker info
 
 # List images
-docker images || docker image ls
-
-# List Containers running
-docker ps
-
-# List all Containers
-docker ps -a
+- docker images
+- docker image ls
 
 # Search for a image
-docker search image_name
+- docker search image_name
 
-# Stop a Container
-docker stop container_id
+# Remove a image
+- docker image rm image_id
 
-# Remove a Container
-docker rm container_id
+# Create a container
+- docker [container] create <params> <image>:<tag>
+- docker [container] create -it <image>:<tag>
 
-# Remove a Image
-docker image rm image_id
+# Create and run a container
+- docker [container] run <params> <image>:<tag>
 
-# Start a Container
-docker start container_name || docker start container_id
+## Cleanup mode
+- docker [container] run --rm <image>:<tag>
 
-# Excecute commands inside the container
-docker exec -it container_id [bash]
+## Run in background (--detach)
+- docker [container] run -d <image>:<tag>
 
-# Create a PostgreSQL Container
-docker run --name postgres-test -e POSTGRES_PASSWORD=docker -e POSTGRES_USER=docker -p 5000:5432 -d postgres
+## Run back in the foreground (attach)
+- docker [container] attach <container_id || container_name>
 
-# Show Container Logs
-docker logs container_name
+# Create a PostgreSQL container
+- docker run --name postgres-test -e POSTGRES_PASSWORD=docker -e POSTGRES_USER=docker -p 5000:5432 -d postgres
 
-# Show Container Status
-docker stats container_name
+# List containers running
+- docker ps
+- docker container ls
+
+# List all containers
+- docker ps -a
+- docker container ls -a
+
+# List the last container
+- docker ps -l
+- docker container ls -l  
+
+# Start a container
+- docker [container] start <container_name || container_id>
+
+# Restart a container
+- docker [container] restart <container_id || container_name>
+
+# Pause a container
+- docker [container] pause <container_id || container_name>
+
+# Unpause a container
+- docker [container] unpause <container_id || container_name>
+
+# Stop a container
+- docker stop container_id
+
+# Execute commands inside the container
+- docker exec -it container_id [bash]
+
+# Show container Logs
+- docker logs container_name
+
+# Show container Status
+- docker stats container_name
+
+# Remove a container
+- docker [conatiner] rm [-f] <container_id || container_name>
+
+# Remove all stopped containers ! :warning: !
+- docker container prune
+
+# Monitoring a container
+docker [container] top <container_id || container_name>
