@@ -132,3 +132,31 @@ Exemplo
 
 
 ### Layers and Cache
+
+
+## Network
+
+`docker network ls` Utilizado para listar as redes existentes no docker. Por padrão ele possui 3 (bridge, host e none)
+
+### Bridge
+Rede default de associação dos containers
+Todos os containers associados a essa rede podem se comunicar via TCP/IP
+
+### Host
+Containers associados a essa rede compartilham de toda a rede da máquina que executa o ambiente Docker
+
+### None
+Containers associados a essa rede ficam isolados. ütil para containers que utilizam arquivos para a execução de comandos e/ou comunicação
+
+### Your network
+
+#### Create a network
+`docker network create -d bridge <network-name>`
+
+#### Connect network with created container
+
+`docker network connect <network-name> <container_name>`
+
+#### Disconnect container from a network
+
+`docker network disconnect <network_name> <container_name>`
