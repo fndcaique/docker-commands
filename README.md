@@ -13,6 +13,9 @@
 ### Search for a image
 - docker search <image_name>
 
+## Download a image
+- docker pull <image_name>
+
 ### Remove a image
 - docker image rm <image_id>
 - docker rmi [-f] <image_id>
@@ -51,7 +54,8 @@
 - docker container ls -l  
 
 ### Start a container
-- docker [container] start <container_name || container_id>
+- docker [container] start [-ai] <container_name || container_id>
+> `-ai` a = attach, i = interactive
 
 ### Restart a container
 - docker [container] restart <container_id || container_name>
@@ -82,3 +86,49 @@
 
 ### Monitoring a container
 docker [container] top <container_id || container_name>
+
+
+## Dockerfile
+
+`FROM` Utilizado para definir a imagem base
+
+Exemplo:
+- `FROM ubuntu:latest [AS alias-de-sua-preferencia]`
+
+`WORKDIR` Utilizado para definir o diretório base em que serão executados os comandos
+
+Exemplo:
+- `WORKDIR /caminho/para/o/diretorio`
+
+`COPY` Utilizado para copiar arquivos e/ou diretórios
+
+Exemplo:
+- `COPY file1 file2 fileN target_dir`
+- `COPY ["file1", "file2", "fileN", "target_dir"]`
+
+`RUN` Utilizado para executar comandos durante a criação da imagem docker
+
+Exemplo:
+- `RUN npm run build`
+
+`EXPOSE` Utilizado para expor a porta em que a aplicação irá rodar
+
+Exemplo
+- `EXPOSE 5000`
+
+`CMD`
+
+`ENTRYPOINT`
+
+`LABEL`
+
+`ENV`
+
+`USER`
+
+
+### Building a image
+`docker image build [it <image_name:image_tag>] <dockerfile_directory>`
+
+
+### Layers and Cache
