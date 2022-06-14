@@ -53,32 +53,35 @@
 - docker ps -l
 - docker container ls -l  
 
-### Start a container
+### Start a container | Iniciar um container
 - docker [container] start [-ai] <container_name || container_id>
 > `-ai` a = attach, i = interactive
 
-### Restart a container
+### Restart a container | Reiniciar um container
 - docker [container] restart <container_id || container_name>
 
-### Pause a container
+### Pause a container | Pausar um container
 - docker [container] pause <container_id || container_name>
 
-### Unpause a container
+### Unpause a container | Despausar um container
 - docker [container] unpause <container_id || container_name>
 
-### Stop a container
+### Stop a container | Parar um container
 - docker stop container_id
 
-### Execute commands inside the container
+### Execute commands inside the container | Executar comandos dentro do container
 - docker exec -it <container_id> [bash]
 
-### Show container Logs
+### Show container Logs | Exibir os logs do container
 - docker logs <container_name>
 
-### Show container Status
+### Show container Status | Exibir o status do container
 - docker stats <container_name>
 
-### Remove a container
+### Inspect a container | Inspecionar um container
+docker inspect <container_name>
+
+### Remove a container | Remover um container
 - docker [conatiner] rm [-f] <container_id || container_name>
 
 ### Remove all stopped containers ! :warning: !
@@ -126,6 +129,8 @@ Exemplo
 
 `USER`
 
+`VOLUME`
+
 
 ### Building a image
 `docker image build [it <image_name:image_tag>] <dockerfile_directory>`
@@ -160,3 +165,20 @@ Containers associados a essa rede ficam isolados. ütil para containers que util
 #### Disconnect container from a network
 
 `docker network disconnect <network_name> <container_name>`
+
+## Volumes
+
+### Rodar container vinculando um volume
+docker run -d --name <container_name> -p 8881:80 -v "/path/dir/:/usr/local/apache2/htdocs/" httpd:2.4
+
+### Listar volumes
+docker volume ls
+
+### Remover um volume
+docker volume rm <volume_name>
+
+### Remover todos os volumes não utilizados no momento
+docker volume prune
+
+### Remover um container e o seu volume
+docker [container] rm -v <container_id> || <container_name>
