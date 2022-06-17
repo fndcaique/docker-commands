@@ -279,7 +279,7 @@ networks:
 
 `docker-compose ps` Utilizado para listar os containers pertencentes ao arquivo compose
 
-`docker-compose stop [<service_name>]` Utilizado para para os serviços
+`docker-compose stop [<service_name>]` Utilizado para parar os serviços
 
 `docker-compose start [<service_name>]`
 
